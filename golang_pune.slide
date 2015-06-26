@@ -1,0 +1,133 @@
+Why we used (a lot of) Go at our Python shop
+& Why it isn't your holy grail
+
+Piyush Verma,
+Software Consultant
+@meson10
+me@meson10.net
+
+* Early years and Challenges
+
+* C++ experience (2007 - 2008)
+
+Started off as a C++ programmer, contributing to KDevelop4.
+
+I had fairly weak programming concepts & C++ was overwhelming.
+
+I would get stuff done, but then I had a real hard time.
+(If I look back I have no clue what & how I did it)
+
+When you have weak concepts, it's easy to write your own code;
+But takes ages to understand others'
+
+In my defence, the language had a huge contribution too.
+(Unreadable, namespaces, boost is unboost, STL is inconsistent & ...)
+
+#*Score:* Programming Skills 1 - 0 Productivity
+
+* Found Python, Flourished
+
+* Salient Features (advantages?) (2007- 2011)
+
+Easy to pick up. First push to production in less than 15 days.
+
+Absolutely human readable code.
+
+Dynamically typed (could make my mistakes)
+
+Time to translate a thought to main.py is less than it took me to write this Slide.
+
+Memory management: It is Automagical. Decent Garbage Collector, abstracts the use of heap vs stack.
+
+Because its interpreted it allows development in interactive shells, for rocket speed prototyping.
+
+#*Score:* Programming Skills 2 - 2 Productivity
+
+* Issues are directly proportional to your growth in Business.
+
+* Mid term challenges (2011-2012)
+
+As no. of requests went up, it demanded scaling.
+
+Conventional stack crashed twice at a big launch.
+
+Daily bugs reported by users.
+
+Unicode was an uphill challenge to handle, more so as team and codebase was growing.
+
+Limited QA budget worsened the woes.
+
+Limited budget also meant we aim at utilizing given resources to the fullest than just keep adding new servers.
+
+Server costs started touching $2500 per month.
+
+Shipping code updates would lead to complex deployments.
+
+Running different versions of our own software was proving tough.
+
+* Backed by experiences we started looking for alternatives.
+
+* Expectations (2012-)
+
+Should have a fairly low learning curve.
+
+Stability and community support is essential.
+
+As much as possible, should be a drop-in replacement.
+
+Strictly static typed.
+
+Speed of development should be as fast as python.
+
+Deployments and dependency management should be easier.
+
+Have inbuilt support for Concurrency.
+
+Should not fall apart while dealing with Unicodes.
+
+With all these considerations, language should be faster than what we were using already.
+
+* Choices
+
+Golang
+
+Haskell
+
+Scala
+
+Java
+
+Rust
+
+* Based on our choices and requirements, We picked Go.
+
+* Experiences with Go (2012-present)
+
+The team picked it up within a matter of two weeks.
+
+Authored Gottp (http://github.com/Simversity/gottp), a microservice framework that powered most of our backend services thereafter.
+
+Strong typing would not let developers compile bad code.
+
+Shipping source code is as easy as shipping binaries.
+
+Maintain different versions of the binary in a private S3.
+
+No more variations in dependencies in production environment.
+
+Didn't have to deal with virtualenvs or creating an environment.
+
+Unicode handled as-it-is. No more Emojis crashing the server.
+
+Monthly bills dropped to ~ $850 for the level of concurrency we could achieve with lesser hardware.
+
+* Contd...
+
+Quickly became the choice for:
+
+  - Complex migration scripts.
+  - Backend servers.
+  - Micro services.
+  - Database Oplog parsers.
+
+* Where Go falls short of its otherwise high benchmark (2015-present)
