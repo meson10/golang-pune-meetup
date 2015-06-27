@@ -121,6 +121,12 @@ Unicode handled as-it-is. No more Emojis crashing the server.
 
 Monthly bills dropped to ~ $850 for the level of concurrency we could achieve with lesser hardware.
 
+Very Comprehensive standard library.
+
+Goroutines, Channels & interfaces are salient and really smooth features of Golang.
+
+Very good inbuilt testing support with the Testing package
+
 * Contd...
 
 Quickly became the choice for:
@@ -130,4 +136,131 @@ Quickly became the choice for:
   - Micro services.
   - Database Oplog parsers.
 
-* Where Go falls short of its otherwise high benchmark (2015-present)
+* If you do not read the FAQ exhaustively and compare it with what you need, you can hit these Surprises (2012-present)
+
+* Confusing type system
+
+- Named Type is different from Unnamed Type.
+- Variable of Named Type is assignable to variable of Unnamed Type, vice versa.
+- Variable of different Named Type is not assignable to each other.
+
+  type MyInt int
+  type MySlice []int
+
+While this is invalid
+
+  var i int = 2
+  var i2 MyInt = 4
+  i = i2
+
+This is not
+
+  custom := make([]int)
+  func checkSlice(input MySlice){...}
+  checkSlice(custom)
+
+* Language extensibility
+
+- Operators are not functions
+- Inbuilt functions can never be extended, reused
+
+  //Cannot create a custom iterator
+  class NewIter:
+      def __init__(self):
+          self.nodes = []
+
+      def append(self, val):
+          self.nodes.append(val)
+
+      def __iter__(self):
+          for elem in self.nodes:
+              yield elem
+
+      def __add__(self, item):
+          temp_iter = NewIter()
+          for elem in self:
+              temp_iter.append(elem)
+          for elem in item:
+              temp_iter.append(elem)
+          return temp_iter
+
+
+* OR this:
+
+  type MyStr string
+  func main() {
+    var z string = "Oh!"
+    var x MyStr = "hello"
+
+    fmt.Println(x + z)
+  }
+
+- No parametric polymorphism [Generics]
+
+- Surprising Casting
+
+  //Valid
+  func hello() interface{} {
+    return 1
+  }
+
+  //Invalid
+  func hello_array() []interface{} {
+    return []int{1,2,3}
+  }
+
+* Rely on interface{} too much, Such implementations will still happen
+
+  type LinkedList struct {
+    value interface{} //Make this an interface again and have to down-cast.
+    next  *LinkedList
+  }
+
+  func (oldNode *LinkedList) prepend(value interface{}) *LinkedList {
+    return &LinkedList{value, oldNode}
+  }
+
+  func tail(value interface{}) *LinkedList {
+    return &LinkedList{value, nil}
+  }
+
+  func traverse(ll *LinkedList) {
+    if ll == nil {
+      return
+    }
+    traverse(ll.next)
+  }
+
+  func main() {
+    node2 := tail(5).prepend("Hello").prepend([]byte{1, 2, 3, 4})
+    traverse(node2) //[1 2 3 4] Hello 5
+  }
+
+* No compount statements
+
+  a = 1
+  b = 3
+  x = a if a < b else a+1
+
+Will have to be written like this
+
+	  a, b := 1, 3
+	  c := (map[bool]int{true: a, false: a + 1})[a < b]
+
+There is no stack-only mode.
+
+* So wait, what's the Conclusion?
+
+* Deal with it, know what you want.
+
+You would see a lot of articles on golang about the languages doesn't have this or that.
+
+I admit, the language does not have generics and that can lead to too much verbose code writing or having to use reflection.
+
+Well, we do those because we want to deal with those things.
+
+The FAQ of the language answers most of why it does not support a few features.
+
+Know your requirements, understand the limitations or conventions, and if you go ahead with it deal with it.
+
+There is always an explicit, verbose and simpler way around it, and that matches the *Zen of python*
