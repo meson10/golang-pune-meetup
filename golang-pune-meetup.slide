@@ -253,13 +253,13 @@ There is no stack-only mode.
 
 * Deal with it, know what you want.
 
-You would see a lot of articles on golang about the language being bad because it doesn't have this or that.
+You would see a lot of articles about Golang being bad or weak.
 
-The FAQ of the language answers most of why it does not support a few features.
+The FAQ of the language answers most of why it does not support a feature.
 
 Know your requirements, understand the limitations or conventions, and if you go ahead with it deal with it.
 
-Yes, the language does not have generics and that can lead to verbose code writing or having to use things like reflection or code generation.
+Yes, the language does not have generics and that can lead to verbose code writing or having to use lot of reflection or code generation.
 
 Well, we do that because we want to deal with those :-)
 
