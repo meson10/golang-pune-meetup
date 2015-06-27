@@ -255,12 +255,11 @@ There is no stack-only mode.
 
 You would see a lot of articles on golang about the languages doesn't have this or that.
 
-I admit, the language does not have generics and that can lead to too much verbose code writing or having to use reflection.
-
-Well, we do those because we want to deal with those things.
-
 The FAQ of the language answers most of why it does not support a few features.
-
 Know your requirements, understand the limitations or conventions, and if you go ahead with it deal with it.
+
+I admit, the language does not have generics and that can lead to too much verbose code writing or having to use things like reflection or code generation.
+
+Well, we do that because we want to deal with those :-)
 
 There is always an explicit, verbose and simpler way around it, and that matches the *Zen of python*
