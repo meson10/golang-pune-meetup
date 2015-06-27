@@ -247,7 +247,10 @@ Will have to be written like this
 	  a, b := 1, 3
 	  c := (map[bool]int{true: a, false: a + 1})[a < b]
 
-There is no stack-only mode.
+- There is no stack-only mode.
+
+- Dependency management can be a HUGE problem.
+So often, we had codes breaking because the library author pushed an imcompatible master branch.
 
 * So wait, what's the Conclusion?
 
